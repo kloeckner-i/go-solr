@@ -40,6 +40,7 @@ type CoreClient struct {
 	baseAdminURL  string
 	baseUpdateURL string
 	baseSelectURL string
+	baseSchemaURL string
 }
 
 func NewCoreClient(client *Client, core Core) *CoreClient {
@@ -62,6 +63,7 @@ func (c *CoreClient) setCore(core Core) {
 	c.baseAdminURL = c.baseURL + "admin/"
 	c.baseUpdateURL = c.baseURL + "update"
 	c.baseSelectURL = c.baseURL + "select"
+	c.baseSchemaURL = c.baseURL + "schema"
 }
 
 // http://localhost:8983/solr/demo/admin/ping?wt=json
@@ -89,6 +91,20 @@ func (c *CoreClient) Status(ctx context.Context, includeIndexInfo bool) (*CoreSt
 		return nil, errors.Errorf("solr: core %s not found", c.name)
 	}
 	return &status, nil
+}
+
+func (c *CoreClient) Schema(ctx context.Context) (*SchemaResponse, error) {
+	schema := &SchemaResponse{}
+	req, err := c.client.NewRequest(http.MethodGet, c.baseSchemaURL, nil)
+	if err != nil {
+		return nil, err
+	}
+	q := req.URL.Query()
+	q.Set("wt", "json")
+	if _, err := c.client.Do(ctx, req, schema); err != nil {
+		return nil, errors.Errorf("solr: core %s not found", c.name)
+	}
+	return schema, nil
 }
 
 func (c *CoreClient) Select(ctx context.Context, query Query) (*SelectResponse, error) {
