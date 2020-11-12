@@ -258,6 +258,7 @@ type SelectResponse struct {
 		FacetIntervals interface{}           `json:"facet_intervals"`
 		FacetHeatmaps  interface{}           `json:"facet_heatmaps"`
 	} `json:"facet_counts"`
+	NextCursorMark string `json:"nextCursorMark"`
 }
 
 type FacetField struct {
