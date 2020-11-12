@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/at15/go-solr/solr"
+	"github.com/kloeckner-i/go-solr/solr"
 )
 
 const coreName = "job"

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/at15/go-solr/solr/internal"
+	"github.com/kloeckner-i/go-solr/solr/internal"
 	"github.com/pkg/errors"
 )
 

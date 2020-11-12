@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/at15/go-solr/solr"
+	"github.com/kloeckner-i/go-solr/solr"
 	"github.com/spf13/cobra"
 )
 

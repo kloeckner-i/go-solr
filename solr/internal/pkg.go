@@ -4,7 +4,7 @@
 package internal
 
 import (
-	"github.com/at15/go-solr/solr/util/logutil"
+	"github.com/kloeckner-i/go-solr/solr/util/logutil"
 )
 
 var log = logutil.Logger.RegisterPkg()
