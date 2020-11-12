@@ -117,7 +117,6 @@ func (c *CoreClient) Select(ctx context.Context, query Query) (*SelectResponse, 
 	// TODO: maybe we can pass *url.Values to encode so we can reuse existing parameters
 	q.Set("wt", "json")
 	req.URL.RawQuery = q.Encode()
-	log.Info(req.URL)
 	if _, err := c.client.Do(ctx, req, res); err != nil {
 		return nil, errors.WithMessage(err, fmt.Sprintf("solr: can't select %s", req.URL.String()))
 	}
